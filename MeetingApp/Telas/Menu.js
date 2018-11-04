@@ -37,7 +37,7 @@ class HomeScreen extends React.Component {
                           />
                       </TouchableOpacity>
 
-                        <Text style={{alignSelf: 'center', marginTop: 30,marginBottom: 10, fontSize: 25, color: '#57E9F2', fontWeight: 'bold'}}>Localização Atual</Text>
+                        <Text style={{alignSelf: 'center', marginTop: 30,marginBottom: 10, fontSize: 22, color: '#57E9F2', fontWeight: 'bold'}}>Localização Atual</Text>
 
                         <View style={{width: 180, alignSelf: 'center', borderRadius: 30, borderWidth: 0, borderColor: 'black', backgroundColor: '#57E9F2', alignSelf: 'center'}}>
                             <Picker

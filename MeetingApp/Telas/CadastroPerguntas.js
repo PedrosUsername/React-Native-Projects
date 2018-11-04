@@ -3,8 +3,8 @@ import {Platform, StyleSheet, Text, View, Button, TextInput, Image, TouchableOpa
 import LinearGradient from 'react-native-linear-gradient'
 import cadastroStyle from '../Style/cadastroStyle';
 
-type Props = {};
-export default class CadastroPerguntas extends Component<Props> {
+//type Props = {};
+export default class CadastroPerguntas extends Component {//<Props> {
   render (){
     return (
       <ScrollView>

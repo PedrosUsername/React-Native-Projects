@@ -4,8 +4,8 @@
  import cadastroStyle from '../Style/cadastroStyle';
  import LinearGradient from 'react-native-linear-gradient'
 
-type Props = {};
-export default class Cadastro extends Component<Props> {
+//type Props = {};
+export default class Cadastro extends Component {//<Props> {
   render() {
     return (
       <ScrollView>

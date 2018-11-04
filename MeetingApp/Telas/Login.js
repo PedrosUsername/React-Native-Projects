@@ -4,6 +4,13 @@ import LinearGradient from 'react-native-linear-gradient';
 import LoginStyle from '../Style/loginStyle';
 export default class TelaLogin extends Component {
 
+  //funcao que liga as pilhas de navegacao AppStack e AuthStack
+  _signInAsync = async () => {
+    
+    this.props.navigation.navigate('App');
+    
+  };
+
   render() {
     return (
       <LinearGradient start={{x: 0, y: 0}} end={{x: 0.5, y: 0.5}} colors={['#9EFBD3', '#57E9F2', '#45D4FB']}style={LoginStyle.viewPrincipal}>
@@ -35,7 +42,7 @@ export default class TelaLogin extends Component {
 
 
                               <TouchableOpacity style={{padding: 7, marginTop: 10, borderRadius:50, width: 170, alignSelf: 'center', borderColor: 'white', borderWidth: 2, backgroundColor: '#7ef3e0'}}
-                              onPress={() => this.props.navigation.navigate('Menu')}
+                              onPress={() => this._signInAsync() }
                               >
                                 <Text style={{alignSelf:'center', color: 'white', fontStyle: 'italic', fontWeight: 'bold', fontSize: 18}}>Entrar</Text>
                               </TouchableOpacity>
@@ -49,6 +56,7 @@ export default class TelaLogin extends Component {
 
                         <TouchableOpacity
                           style={{padding: 5, borderRadius: 30, width: '45%', marginTop: 15, borderColor: 'white', borderWidth: 0}}
+                          onPress={() => alert("sefodeo parcero...")}
                         ><Text style={{ textAlign: 'center', color: 'white', fontStyle: 'italic', fontWeight: 'bold', fontSize: 16, textDecorationLine: 'underline'}}>Recuperar Senha</Text></TouchableOpacity>
                     </View>
 

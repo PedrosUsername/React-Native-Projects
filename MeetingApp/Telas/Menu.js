@@ -38,10 +38,16 @@ class HomeScreen extends React.Component {
 }
 
 class SettingsScreen extends React.Component {
+  _signOutAsync = async () => {
+    
+    this.props.navigation.navigate('Auth');
+  };
+
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
+
+        <Button title="sair" onPress={this._signOutAsync} />
 
       </View>
     );

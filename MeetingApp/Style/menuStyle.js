@@ -10,20 +10,16 @@ const styles = StyleSheet.create({
     width: 300,
     height: 100,
     alignSelf: 'center',
-    borderColor: 'black',
-    borderWidth: 2,
     justifyContent: 'center',
     alignItems: 'center'
   },
   viewTituloTexto: {
-    fontSize: 40,
+    fontSize: 60,
     color: 'white',
     fontFamily: 'Optima-BoldItalic'
   },
   viewSecundaria: {
     marginTop:10,
-    borderColor: 'black',
-    borderWidth: 2,
     width: 300,
     height: 430,
     justifyContent: 'center',
@@ -44,7 +40,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#7ef3e0',
     alignSelf: 'center',
-    marginTop: 180
+    marginTop: 10
   },
   textBtnContainerCentral: {
     color: '#fff',
@@ -59,6 +55,22 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 10,
     borderColor: '#7ef3e0'
+  },
+  btnSetting: {
+    width: 300,
+    height: 40,
+    backgroundColor: '#fff',
+    borderRadius: 30,
+    marginTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center'
+
+  },
+  txtSettings: {
+    alignSelf: 'center',
+    fontSize: 23,
+    color: '#7ef3e0',
+
   }
 
 });

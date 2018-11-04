@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, TextInput, Image, TouchableOpacity, textDecorationLine, ScrollView, KeyboardAvoidingView, ImageBackground} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, TextInput, Image, Switch, TouchableOpacity, textDecorationLine, ScrollView, KeyboardAvoidingView, ImageBackground} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import LoginStyle from '../Style/loginStyle';
 export default class TelaLogin extends Component {

@@ -7,7 +7,7 @@
 // Coloque o IP do roteador da rede que
 // conecta o servidor aos dispositivos
 // moveis dos usuarios
-var ROTEADOR = 'trabalhodelp.herokuapp.com';
+var ROTEADOR = '192.168.0.2:3000';
 // Celular Pedro ---> '192.168.43.176:3000'
 // RoteadorCasa Pedro ---> '192.168.0.2:3000'
 // Heroku ---> 'trabalhodelp.herokuapp.com'
@@ -21,7 +21,7 @@ export default class Cadastro extends Component {//<Props> {
     this.state = {
       username: '',
       senha: '',
-      fullname: ''
+      fullname: '',
     }
   }
 
@@ -44,7 +44,11 @@ export default class Cadastro extends Component {//<Props> {
     .then((response) => response.json())
     .then((responseJson) => {
       if(responseJson.length < 1){
-        this.props.navigation.navigate('CadastroPerguntas');
+        this.props.navigation.navigate('CadastroPerguntas', {
+           user: this.state.username,
+           password: this.state.senha,
+           fullname: this.state.fullname,
+         });
       }
       else{
         alert('nome de usuario ja registrado. Por favor escolha outro...');
@@ -66,7 +70,7 @@ export default class Cadastro extends Component {//<Props> {
     this.setState({ senha: text })
   }
   handleFullName = (text) => {
-    this.setState({ fullName: text })
+    this.setState({ fullname: text })
   }
 
 

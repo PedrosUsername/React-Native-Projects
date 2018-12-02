@@ -9,14 +9,16 @@ import telaTeste2 from './Telas/telasTeste2';
 import homeApp from './Telas/Home';
 
 const App = createStackNavigator({
+
+Cadastro: {screen: cadastro},
+    Home: {screen:  menu},
+  CadastroPerguntas: {screen: cadastroperguntas},
   Login: {screen: login},
-  Home: {screen:  menu},
+
   Teste2: {screen: telaTeste2},
   Menu: {screen: menu},
   Teste: {screen: telaTeste},
   Configuracao: {screen: config},
-  Cadastro: {screen: cadastro},
-  CadastroPerguntas: {screen: cadastroperguntas},
 
 
 });

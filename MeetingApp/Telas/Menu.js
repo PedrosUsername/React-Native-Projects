@@ -24,8 +24,8 @@ class HomeScreen extends React.Component {
                         <Image source={require('../img/avatar.png')}
                             style={MenuStyle.viewContainerCentralAvatar}
                         />
-
-                        <Text style={{alignSelf: 'center', fontSize: 22, color: '#57E9F2', fontWeight: 'bold', marginTop: 30}}>Recarregar Combinaçōes</Text>
+                        <Text style={{alignSelf: 'center', fontSize: 18, color: '#57E9F2', fontWeight: 'bold',marginTop: 20}} >Nome Usuario</Text>
+                        <Text style={{alignSelf: 'center', fontSize: 18, color: '#57E9F2', fontWeight: 'bold', marginTop: 30}}>Recarregar Combinaçōes</Text>
                       <TouchableOpacity
                         style={{borderColor: 'black', borderWidth: 0, width: 130, height: 30, alignSelf: 'center', backgroundColor: '#7ef3e0', borderRadius: 20, marginTop: 10, justifyContent: 'center', alignItems: 'center'}}
                       >
@@ -37,12 +37,12 @@ class HomeScreen extends React.Component {
                           />
                       </TouchableOpacity>
 
-                        <Text style={{alignSelf: 'center', marginTop: 30,marginBottom: 10, fontSize: 22, color: '#57E9F2', fontWeight: 'bold'}}>Localização Atual</Text>
+                        <Text style={{alignSelf: 'center', marginTop: 30,marginBottom: 10, fontSize: 18, color: '#57E9F2', fontWeight: 'bold'}}>Localização Atual</Text>
 
                         <View style={{width: 180, alignSelf: 'center', borderRadius: 30, borderWidth: 0, borderColor: 'black', backgroundColor: '#57E9F2', alignSelf: 'center'}}>
                             <Picker
                             enabled={false}
-                            style={{color:'white', backgroundColor: 'transparent', alignSelf: 'center', width: 230, height: 40, opacity: 1, borderRadius: 20, borderColor: 'blue', opacity: 0.6}}
+                            style={{color:'white', backgroundColor: 'transparent', alignSelf: 'center', width: 230, height: 25, opacity: 1, borderRadius: 20, borderColor: 'blue', opacity: 0.6}}
 
 
                             placeholder="Selecione o País"
@@ -92,8 +92,10 @@ class SettingsScreen extends React.Component {
           </TouchableOpacity>
 
           <TouchableOpacity style={{width: 150, height: 40,  backgroundColor: '#fff',
-            borderRadius: 30,marginTop: 40, justifyContent: 'center', alignItems: 'center'}}>
-              <Text style={MenuStyle.txtSettings}>Sair</Text>
+            borderRadius: 30,marginTop: 40, justifyContent: 'center', alignItems: 'center'}}
+            onPress={() => this.props.navigation.navigate('Login')}
+            >
+              <Text style={{color: '#45D4FB' }}>Sair</Text>
           </TouchableOpacity>
 
           </View>

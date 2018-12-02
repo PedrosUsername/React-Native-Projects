@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   btnContainerCentral: {
     borderWidth: 0,
     width: 230,
-    height: 40,
+    height: 30,
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   textBtnContainerCentral: {
     color: '#fff',
-    fontSize: 22,
+    fontSize: 15,
     fontStyle: 'italic'
   },
   viewContainerCentralAvatar: {
@@ -57,19 +57,21 @@ const styles = StyleSheet.create({
     borderColor: '#7ef3e0'
   },
   btnSetting: {
-    width: 300,
+    width: 200,
     height: 40,
-    backgroundColor: '#fff',
+    backgroundColor: 'transparent',
     borderRadius: 30,
     marginTop: 20,
+    borderColor: 'white',
+    borderWidth: 2,
     justifyContent: 'center',
     alignItems: 'center'
 
   },
   txtSettings: {
     alignSelf: 'center',
-    fontSize: 23,
-    color: '#7ef3e0',
+    fontSize: 15,
+    color: '#fff',
 
   }
 

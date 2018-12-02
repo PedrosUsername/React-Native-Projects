@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   viewPrimaria:{
-    height: 600,
+    height: '100%',
     borderWidth: 1,
     borderColor: 'black',
     justifyContent: 'flex-start',
@@ -20,14 +20,25 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   buttons:{
-      width: 90,
+      width: '50%',
       borderColor:'white',
+      backgroundColor: '#9EFBD3',
       borderWidth:2,
       padding: 10,
       borderRadius: 30,
-      width: '80%',
       color: 'white',
-      marginTop: 10
+      marginTop: 10,
+      justifyContent: 'center',
+      alignItems: 'center',
+      alignSelf: 'center'
+  },
+  descricaoInput:{
+    borderColor: 'white',
+    borderWidth: 1,
+    width: 300,
+    height: 100,
+    marginTop: 10,
+    borderRadius:10
   }
 });
 

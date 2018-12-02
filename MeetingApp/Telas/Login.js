@@ -78,7 +78,7 @@ export default class TelaLogin extends Component {
       <ScrollView>
 
                     <View style={LoginStyle.titulo}>
-                      <Text style={LoginStyle.textTitulo}>MeetingEpp</Text>
+                      <Text style={LoginStyle.textTitulo}>MeetingOpp</Text>
                     </View>
 
                     <View style={LoginStyle.viewSecundaria}>

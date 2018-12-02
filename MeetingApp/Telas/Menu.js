@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, FlatList, View, Header, TextInput, ScrollView, TouchableOpacity, Image, Picker } from 'react-native';
+import { Text, FlatList, View, Header, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image, Picker } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 import { Icon, Button, SocialIcon, Avatar } from 'react-native-elements';
@@ -17,15 +17,23 @@ var ROTEADOR = '192.168.43.176:3000';
 
 
 class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props)
+
+    // recebe parametros de Login.js
+    const { navigation } = this.props;
+    const user = navigation.getParam('user', 'x');
+
+    this.state = {
+      usuario: user,
+      local: '         '+'Sala LP - Turma Ladeira'
+    }
+  }
   
   render() {
     return (
   <LinearGradient start={{x: 0, y: 0}} end={{x: 0.5, y: 0.5}} colors={['#9EFBD3', '#57E9F2', '#45D4FB']} style={MenuStyle.gradientView}>
     <ScrollView>
-
-        <View style={MenuStyle.viewTitulo}>
-          <Text style={MenuStyle.viewTituloTexto}>Home!</Text>
-        </View>
 
         <View style={MenuStyle.viewSecundaria}>
 
@@ -35,7 +43,7 @@ class HomeScreen extends React.Component {
                         <Image source={require('../img/avatar.png')}
                             style={MenuStyle.viewContainerCentralAvatar}
                         />
-                        <Text style={{alignSelf: 'center', fontSize: 18, color: '#57E9F2', fontWeight: 'bold',marginTop: 20}} >Nome Usuario</Text>
+                        <Text style={{alignSelf: 'center', fontSize: 18, color: '#57E9F2', fontWeight: 'bold',marginTop: 20}} >{this.state.usuario}</Text>
                         <Text style={{alignSelf: 'center', fontSize: 18, color: '#57E9F2', fontWeight: 'bold', marginTop: 30}}>Recarregar Combinaçōes</Text>
                       <TouchableOpacity
                         style={{borderColor: 'black', borderWidth: 0, width: 130, height: 30, alignSelf: 'center', backgroundColor: '#7ef3e0', borderRadius: 20, marginTop: 10, justifyContent: 'center', alignItems: 'center'}}
@@ -59,7 +67,7 @@ class HomeScreen extends React.Component {
                             placeholder="Selecione o País"
                             mode="dropdown"
                             >
-                                <Picker.Item label="            Sala LP - Turma Ladeira"  value="salaLP"/>
+                                <Picker.Item label={this.state.local}  value="salaLP"/>
                             </Picker>
                         </View>
                     <TouchableOpacity style={MenuStyle.btnContainerCentral}>

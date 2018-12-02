@@ -10,7 +10,7 @@ import Loader from '../Telas/Loader';
 // Coloque o IP do roteador da rede que
 // conecta o servidor aos dispositivos
 // moveis dos usuarios
-var ROTEADOR = 'trabalhodelp.herokuapp.com';
+var ROTEADOR = '192.168.43.176:3000';
 // Celular Pedro ---> '192.168.43.176:3000'
 // RoteadorCasa Pedro ---> '192.168.0.2:3000'
 // Heroku ---> 'trabalhodelp.herokuapp.com'
@@ -81,7 +81,12 @@ class Estatistica extends React.Component {
   constructor(props) {
     super(props)
 
+    // recebe parametros de Login.js
+    const { navigation } = this.props;
+    const user = navigation.getParam('user', 'x');
+
     this.state = {
+      usuario: user,
       serversResponse: [],
       tags: '',
       loading: false,
@@ -93,7 +98,19 @@ class Estatistica extends React.Component {
 
   //pega todos os usuarios do BD e joga em serversRespose
   getAllofThem(){
-    fetch('http://' + ROTEADOR + '/pool_usuarios/')
+    fetch('http://' + ROTEADOR + '/pool_usuarios/', {
+    
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        
+        usuario: this.state.usuario
+        
+      }),
+    })
     .then((response) => response.json())
     .then((responseJson) => {
 
@@ -123,7 +140,6 @@ class Estatistica extends React.Component {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-        console.log(responseJson);
         this.setState( {serversResponse: responseJson, loading: false} );
     })
     .catch((error) => {
@@ -140,7 +156,8 @@ class Estatistica extends React.Component {
         return(
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 
-                  <Text>nenhum usuario encontrado...</Text>
+                  <Text>no momento não existem</Text>
+                  <Text>usuarios compativeis com você { this.state.usuario }.</Text>
                   <Text>pesquise por:</Text>
                   <Text>usuario!=' '</Text>
                   <Text>para ver todo os usuarios</Text>
@@ -196,7 +213,7 @@ class Estatistica extends React.Component {
       <Button
           color={'blue'}
           onPress={ () => { 
-            if (this.state.tags != ''){
+            if ((this.state.tags != '')&&(this.state.tags != ' ')){
               this.setState({ loading: true })
               this.postTags()
               

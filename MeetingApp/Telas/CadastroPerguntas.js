@@ -6,7 +6,7 @@ import cadastroStyle from '../Style/cadastroStyle';
 // Coloque o IP do roteador da rede que
 // conecta o servidor aos dispositivos
 // moveis dos usuarios
-var ROTEADOR = 'trabalhodelp.herokuapp.com';
+var ROTEADOR = '192.168.43.176:3000';
 // Celular Pedro ---> '192.168.43.176:3000'
 // RoteadorCasa Pedro ---> '192.168.0.2:3000'
 // Heroku ---> 'trabalhodelp.herokuapp.com'

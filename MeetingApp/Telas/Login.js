@@ -6,7 +6,7 @@ import LoginStyle from '../Style/loginStyle';
 // Coloque o IP do roteador da rede que
 // conecta o servidor aos dispositivos
 // moveis dos usuarios
-var ROTEADOR = 'trabalhodelp.herokuapp.com';
+var ROTEADOR = '192.168.43.176:3000';
 // Celular Pedro ---> '192.168.43.176:3000'
 // RoteadorCasa Pedro ---> '192.168.0.11:3000'
 // Heroku ---> 'trabalhodelp.herokuapp.com'
@@ -25,7 +25,9 @@ export default class TelaLogin extends Component {
   //funcao que liga as pilhas de navegacao AppStack e AuthStack
   _signInAsync = async () => {
     
-    this.props.navigation.navigate('App');
+    this.props.navigation.navigate('Menu', {
+      user: this.state.usuario,
+    });
     
   };
   

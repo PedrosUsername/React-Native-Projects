@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, FlatList, StyleSheet, View, Header, TextInput, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { Text, FlatList, View, Header, TextInput, ScrollView, TouchableOpacity, Image, Picker } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 import { Icon, Button, SocialIcon, Avatar } from 'react-native-elements';
@@ -35,8 +35,33 @@ class HomeScreen extends React.Component {
                         <Image source={require('../img/avatar.png')}
                             style={MenuStyle.viewContainerCentralAvatar}
                         />
-                    
+                        <Text style={{alignSelf: 'center', fontSize: 18, color: '#57E9F2', fontWeight: 'bold',marginTop: 20}} >Nome Usuario</Text>
+                        <Text style={{alignSelf: 'center', fontSize: 18, color: '#57E9F2', fontWeight: 'bold', marginTop: 30}}>Recarregar Combinaçōes</Text>
+                      <TouchableOpacity
+                        style={{borderColor: 'black', borderWidth: 0, width: 130, height: 30, alignSelf: 'center', backgroundColor: '#7ef3e0', borderRadius: 20, marginTop: 10, justifyContent: 'center', alignItems: 'center'}}
+                      >
+                          <Icon
+                            name='ios-refresh'
+                            type='ionicon'
+                            color='#fff'
+                            size={25}
+                          />
+                      </TouchableOpacity>
 
+                        <Text style={{alignSelf: 'center', marginTop: 30,marginBottom: 10, fontSize: 18, color: '#57E9F2', fontWeight: 'bold'}}>Localização Atual</Text>
+
+                        <View style={{width: 180, alignSelf: 'center', borderRadius: 30, borderWidth: 0, borderColor: 'black', backgroundColor: '#57E9F2', alignSelf: 'center'}}>
+                            <Picker
+                            enabled={false}
+                            style={{color:'white', backgroundColor: 'transparent', alignSelf: 'center', width: 230, height: 25, opacity: 1, borderRadius: 20, borderColor: 'blue', opacity: 0.6}}
+
+
+                            placeholder="Selecione o País"
+                            mode="dropdown"
+                            >
+                                <Picker.Item label="            Sala LP - Turma Ladeira"  value="salaLP"/>
+                            </Picker>
+                        </View>
                     <TouchableOpacity style={MenuStyle.btnContainerCentral}>
                       <Text style={MenuStyle.textBtnContainerCentral}>Alterar Localização</Text>
                     </TouchableOpacity>
@@ -57,11 +82,40 @@ class SettingsScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <LinearGradient start={{x: 0, y: 0}} end={{x: 0.5, y: 0.5}} colors={['#9EFBD3', '#57E9F2', '#45D4FB']} style={MenuStyle.gradientView}>
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 
-        <Button title="sair" onPress={this._signOutAsync} />
+          <Text style={{fontSize: 55, color: 'white'}} >Configurações</Text>
 
-      </View>
+          <TouchableOpacity style={MenuStyle.btnSetting}>
+              <Text style={MenuStyle.txtSettings}>Alterar nome de Login</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={MenuStyle.btnSetting}>
+              <Text style={MenuStyle.txtSettings}>Alterar Senha</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={MenuStyle.btnSetting}>
+              <Text style={MenuStyle.txtSettings}>Editar Cadastro</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={MenuStyle.btnSetting}>
+              <Text style={MenuStyle.txtSettings}>Alterar Preferências</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={MenuStyle.btnSetting}>
+              <Text style={MenuStyle.txtSettings}>Alterar Usuário</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={{width: 150, height: 40,  backgroundColor: '#fff',
+            borderRadius: 30,marginTop: 40, justifyContent: 'center', alignItems: 'center'}}
+            onPress={this._signOutAsync}
+            >
+              <Text style={{color: '#45D4FB' }}>Sair</Text>
+          </TouchableOpacity>
+
+          </View>
+      </LinearGradient>
     );
   }
 }
@@ -267,7 +321,7 @@ export default createBottomTabNavigator({
           name='ios-home'
           type='ionicon'
           color='#fff'
-          size={50}
+          size={30}
         />
       ),
       tabBarOptions: {
@@ -287,7 +341,7 @@ export default createBottomTabNavigator({
           name='ios-settings'
           type='ionicon'
           color='#fff'
-          size={50}
+          size={30}
         />
       ),
       tabBarOptions: {
@@ -307,7 +361,7 @@ export default createBottomTabNavigator({
            name='ios-text'
            type='ionicon'
            color='#fff'
-           size={50}
+           size={30}
          />
        ),
        tabBarOptions: {
@@ -327,7 +381,7 @@ export default createBottomTabNavigator({
             name='md-analytics'
             type='ionicon'
             color='#fff'
-            size={50}
+            size={30}
           />
         ),
         tabBarOptions: {

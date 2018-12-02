@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, TextInput, Image, TouchableOpacity, textDecorationLine, ScrollView, KeyboardAvoidingView, ImageBackground} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, TextInput, Image, Switch, TouchableOpacity, textDecorationLine, ScrollView, KeyboardAvoidingView, ImageBackground} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import LoginStyle from '../Style/loginStyle';
 
@@ -65,8 +65,6 @@ export default class TelaLogin extends Component {
 
   }
 
-
-
   handleUsuario = (text) => {
     this.setState({ usuario: text })
   }
@@ -80,7 +78,7 @@ export default class TelaLogin extends Component {
       <ScrollView>
 
                     <View style={LoginStyle.titulo}>
-                      <Text style={LoginStyle.textTitulo}>MeetingApp</Text>
+                      <Text style={LoginStyle.textTitulo}>MeetingEpp</Text>
                     </View>
 
                     <View style={LoginStyle.viewSecundaria}>

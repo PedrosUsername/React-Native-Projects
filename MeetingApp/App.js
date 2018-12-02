@@ -12,16 +12,12 @@ import homeApp from './Telas/Home';
 //pilha de navegacao para telas do usuario
 const AppStack = createStackNavigator({
   Home: {screen:  menu},
-  Teste2: {screen: telaTeste2},
   Menu: {screen: menu},
-  Teste: {screen: telaTeste},
-  //Login: {screen: login},
   Configuracao: {screen: config},
-  //Cadastro: {screen: cadastro},
-  //CadastroPerguntas: {screen: cadastroperguntas},
+  Teste2: {screen: telaTeste2},
+  Teste: {screen: telaTeste},
 
-
-});
+})
 
 //pilha de navegacao para telas de autenticacao
 const AuthStack = createStackNavigator({

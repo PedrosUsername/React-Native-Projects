@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, TextInput, Image, TouchableOpacity, textDecorationLine, ScrollView, KeyboardAvoidingView, ImageBackground} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, TextInput, Image, TouchableOpacity, textDecorationLine, ScrollView, KeyboardAvoidingView, ImageBackground, Picker} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient'
 import cadastroStyle from '../Style/cadastroStyle';
+import RNPickerSelect from 'react-native-picker-select';
 
 // Coloque o IP do roteador da rede que
 // conecta o servidor aos dispositivos
@@ -23,6 +24,8 @@ export default class CadastroPerguntas extends Component {//<Props> {
     const password = navigation.getParam('password', 'x');
     const fullname = navigation.getParam('fullname', 'x');
 
+    this.inputRefs = {};
+
     this.state = {
       usuario: user,
       senha: password,
@@ -30,10 +33,176 @@ export default class CadastroPerguntas extends Component {//<Props> {
       curso: '',
       signo: '',
       uma_refeicao: '',
-      uma_banda: ''
-    }
-  }
+      uma_banda: '',
 
+      corFavorita: undefined,
+            items: [
+                {
+                    label: 'Vermelho',
+                    value: 'Vermelho',
+                },
+                {
+                    label: 'Azul',
+                    value: 'Azul',
+                },
+                {
+                    label: 'Amarelo',
+                    value: 'Amarelo',
+                },
+                {
+                    label: 'Branco',
+                    value: 'Branco',
+                },
+                {
+                    label: 'Roxo',
+                    value: 'Roxo',
+                },
+                {
+                    label: 'Cinza',
+                    value: 'Cinza',
+                },
+                {
+                    label: 'Verde',
+                    value: 'Verde',
+                },
+                {
+                    label: 'Rosa',
+                    value: 'Rosa',
+                },
+                {
+                    label: 'Preto',
+                    value: 'Preto',
+                },
+            ],
+    favSport: undefined,
+            items2: [
+                {
+                    label: 'Futebol',
+                    value: 'Futebol',
+                },
+                {
+                    label: 'Basquete',
+                    value: 'Basquete',
+                },
+                {
+                    label: 'Volei',
+                    value: 'Volei',
+                },
+                {
+                    label: 'Handball',
+                    value: 'Handball',
+                },
+                {
+                    label: 'Natação',
+                    value: 'Natação',
+                },
+                {
+                    label: 'Sedentario',
+                    value: 'Sedentario',
+                },
+            ],
+        diversao: undefined,
+            items3: [
+                {
+                    label: 'Cinema',
+                    value: 'Cinema',
+                },
+                {
+                    label: 'Balada',
+                    value: 'Balada',
+                },
+                {
+                    label: 'Social',
+                    value: 'Social',
+                },
+                {
+                    label: 'Netflix em casa',
+                    value: 'Netflix em casa',
+                },
+                {
+                    label: 'Sair com os amigos',
+                    value: 'Sair com os amigos',
+                },
+                {
+                    label: 'Jogar video games',
+                    value: 'Jogar video games',
+                }
+            ],
+        musica: undefined,
+            items4: [
+              {
+                label:'Pop',
+                value: 'Pop'
+              },
+              {
+                label:'Funk',
+                value: 'Funk'
+              },
+              {
+                label:'Sertanejo',
+                value: 'Sertanejo'
+              },
+              {
+                label:'Rock',
+                value: 'Rock'
+              },
+              {
+                label:'Rap',
+                value: 'Rap'
+              },
+              {
+                label:'Forro',
+                value: 'Forro'
+              },
+              {
+                label:'EDM',
+                value: 'EDM'
+              },
+            ],
+        personalidade: undefined,
+            items5: [
+              {
+                label:'Extrovertido',
+                value: 'Extrovertido'
+              },
+              {
+                label:'Introvertido',
+                value: 'Introvertido'
+              },
+              {
+                label:'Sentimental extrovertido',
+                value: 'Sentimental extrovertido'
+              },
+              {
+                label:'Sentimental introvertido',
+                value: 'Sentimental introvertido'
+              },
+              {
+                label:'Intuitivo extrovertido',
+                value: 'Intuitivo extrovertido'
+              },
+              {
+                label:'Intuitivo introvertido',
+                value: 'Intuitivo introvertido'
+              },
+            ],
+        materias: undefined,
+            items6: [
+              {
+                label:'Humanas',
+                value: 'Humanas'
+              },
+              {
+                label:'Exatas',
+                value: 'Exatas'
+              },
+              {
+                label:'Biologicas',
+                value: 'Biologicas'
+              }
+            ],
+        };
+    }
 
 
   //pede para o bd registrar o usuario com tais valores
@@ -82,79 +251,233 @@ export default class CadastroPerguntas extends Component {//<Props> {
   handleUmaBanda = (text) => {
     this.setState({ uma_banda: text })
   }
+  handleUmaCor = (text) => {
+    this.setState({ corFavorita: text })
+  }
+  handleUmEsporte = (text) => {
+    this.setState({ favSport: text });
+  }
+  handleUmaDivercao = (text) => {
+    this.setState({ diversao: text });
+  }
+  handleUmEstilo = (text) => {
+    this.setState({ musica: text });
+  }
+  handleUmaPersonalidade = (text) => {
+    this.setState({ personalidade: text });
+  }
+  handleUmaArea = (text) => {
+    this.setState({ materias: text });
+  }
+
 
   render (){
     
     
     return (
-      <ScrollView>
         <LinearGradient start={{x: 0, y: 0}} end={{x: 0.5, y: 0.5}} colors={['#9EFBD3', '#57E9F2', '#45D4FB']} style={cadastroStyle.gradientView}>
 
-          <View style={cadastroStyle.viewPrimaria}>
+            <View style={cadastroStyle.viewPrimaria}>
+                <ScrollView>
+                    <Text style={{color: 'white', fontSize: 15, marginTop: 20}}>* Qual sua cor favorita?</Text>
+                    <RNPickerSelect
+                       placeholder={{
+                           label: 'Escolha sua cor',
+                           value: null,
+                       }}
+                       placeholderTextColor= 'white'
+                       items={this.state.items}
 
-            <Text
-            style={{color:'white', fontSize: 50, fontFamily: 'Palatino-Italic', fontStyle: 'italic',}}
-            >
-            jogo rapido
-            </Text>
+                       onValueChange = {this.handleUmaCor}
 
-            <Text style={{alignSelf:'flex-start', borderColor: 'white', borderWidth: 0, color: 'white', fontSize: 20, marginLeft: 25, marginTop: 30}}>seu curso:</Text>
-            <TextInput
-              placeholder='Matemática'
-              placeholderTextColor= 'white'
-              selectionColor='white'
-              style={cadastroStyle.buttons}
-              onChangeText = {this.handleCurso}
-            />
-
-
-
-            <Text style={{alignSelf:'flex-start', borderColor: 'white', borderWidth: 0, color: 'white', fontSize: 20, marginLeft: 25, marginTop: 20}}>seu signo: </Text>
-            <TextInput
-              placeholder='Áries'
-              placeholderTextColor= 'white'
-              selectionColor='white'
-              style={cadastroStyle.buttons}
-              onChangeText = {this.handleSigno}
-            />
+                       onUpArrow={() => {
+                           this.inputRefs.name.focus();
+                       }}
+                       onDownArrow={() => {
+                           this.inputRefs.picker2.togglePicker();
+                       }}
+                       style={{}}
+                       value={this.state.corFavorita}
+                       ref={(el) => {
+                           this.inputRefs.picker = el;
+                       }}
+                    />
 
 
 
-            <Text style={{alignSelf:'flex-start', borderColor: 'white', borderWidth: 0, color: 'white', fontSize: 20, marginLeft: 25, marginTop: 20}}>uma banda: </Text>
-            <TextInput
-              placeholder='Linking Park'
-              placeholderTextColor= 'white'
-              selectionColor='white'
-              style={cadastroStyle.buttons}
-              onChangeText = {this.handleUmaBanda}
-            />
+                    <Text style={{color: 'white', fontSize: 15, marginTop: 20}}>* Qual seu esporte favorito?</Text>
+                    <RNPickerSelect
+                        placeholder={{
+                            label: 'Select a sport...',
+                            value: null,
+                        }}
+                        placeholderTextColor= 'white'
+                        items={this.state.items2}
 
-            <Text style={{alignSelf:'flex-start', borderColor: 'white', borderWidth: 0, color: 'white', fontSize: 20, marginLeft: 25, marginTop: 20}}>uma refeição: </Text>
-            <TextInput
-              placeholder='Buchada de Bode'
-              placeholderTextColor= 'white'
-              selectionColor='white'
-              style={cadastroStyle.buttons}
-              onChangeText = {this.handleUmaRefeicao}
-            />
+                        onValueChange = {this.handleUmEsporte}
 
-            
-                <TouchableOpacity
-                      style={{
-                        borderWidth: 1, borderColor: '#FFF', marginTop: 20, height: 45, width: 240,
-                        borderRadius: 20, justifyContent: 'center', alignItems: 'center', backgroundColor: '#7ef3e0'
+                        onUpArrow={() => {
+                            this.inputRefs.picker.togglePicker();
+                        }}
+                        onDownArrow={() => {
+                            this.inputRefs.company.focus();
+                        }}
+                        style={{}}
+                        value={this.state.favSport}
+                        ref={(el) => {
+                            this.inputRefs.picker2 = el;
+                        }}
+                    />
 
-                      }}
-                      onPress={() => this.postStufftoRegister() }
-                    >
-                    <Text style={{color:'white', fontSize: 18}}>Cadastrar</Text>
-                </TouchableOpacity>
-            
-          </View>
+                    <Text style={{color: 'white', fontSize: 15, marginTop: 20}}>* Qual dos programas abaixo lhe agrada mais?</Text>
+                    <RNPickerSelect
+                        placeholder={{
+                            label: 'Selecione o que mais gosta',
+                            value: null,
+                        }}
+                        placeholderTextColor= 'white'
+                        items={this.state.items3}
+
+                        onValueChange = {this.handleUmaDivercao}
+                        
+                        onUpArrow={() => {
+                            this.inputRefs.picker.togglePicker();
+                        }}
+                        onDownArrow={() => {
+                            this.inputRefs.company.focus();
+                        }}
+                        style={{}}
+                        value={this.state.diversao}
+                        ref={(el) => {
+                            this.inputRefs.picker2 = el;
+                        }}
+                    />
+
+                    <Text style={{color: 'white', fontSize: 15, marginTop: 20}}>* Qual seu estilo musial preferido?</Text>
+                    <RNPickerSelect
+                        placeholder={{
+                            label: 'Selecione o que mais gosta',
+                            value: null,
+                        }}
+                        placeholderTextColor= 'white'
+                        items={this.state.items4}
+                        onValueChange = { this.handleUmEstilo }
+                        onUpArrow={() => {
+                            this.inputRefs.picker.togglePicker();
+                        }}
+                        onDownArrow={() => {
+                            this.inputRefs.company.focus();
+                        }}
+                        style={{}}
+                        value={this.state.musica}
+                        ref={(el) => {
+                            this.inputRefs.picker2 = el;
+                        }}
+                    />
+
+                    <Text style={{color: 'white', fontSize: 15, marginTop: 20}}>* Como vc descreveria sua personalidade?</Text>
+                    <RNPickerSelect
+                        placeholder={{
+                            label: 'Selecione o que mais gosta',
+                            value: null,
+                        }}
+                        placeholderTextColor= 'white'
+                        items={this.state.items5}
+    
+                        onValueChange ={ this.handleUmaPersonalidade }
+    
+                        onUpArrow={() => {
+                            this.inputRefs.picker.togglePicker();
+                        }}
+                        onDownArrow={() => {
+                            this.inputRefs.company.focus();
+                        }}
+                        style={{color: 'white'}}
+                        value={this.state.personalidade}
+                        ref={(el) => {
+                            this.inputRefs.picker2 = el;
+                        }}
+                    />
+
+                    <Text style={{color: 'white', fontSize: 15, marginTop: 20}}>* Qual sua area preferida?</Text>
+                    <RNPickerSelect
+                        placeholder={{
+                            label: 'Selecione o que mais gosta',
+                            value: null,
+                        }}
+                        placeholderTextColor= 'white'
+                        items={this.state.items6}
+    
+                        onValueChange={ this.handleUmaArea }
+    
+                        onUpArrow={() => {
+                            this.inputRefs.picker.togglePicker();
+                        }}
+                        onDownArrow={() => {
+                            this.inputRefs.company.focus();
+                        }}
+                        style={{color: 'white'}}
+                        value={this.state.materias}
+                        ref={(el) => {
+                            this.inputRefs.picker2 = el;
+                        }}
+                    />
+
+                    <Text style={{alignSelf:'flex-start', borderColor: 'white', borderWidth: 0, color: 'white', fontSize: 20, marginLeft: 25, marginTop: 30}}>seu telefone:</Text>
+                        <TextInput
+                        placeholder='Matemática'
+                        placeholderTextColor= 'white'
+                        selectionColor='white'
+                        style={cadastroStyle.buttons}
+                        onChangeText = {this.handleTelefone}
+                    />
+
+                    <Text style={{color: 'white', fontSize: 15}}>Em poucas palavras, como vc se descreveria?</Text>
+                    <TextInput
+                        ref={(el) => {
+                            this.inputRefs.company = el;
+                        }}
+                        returnKeyType="go"
+                        enablesReturnKeyAutomatically
+                        style={cadastroStyle.descricaoInput}
+                        onValueChange={ this.handleDescricao }
+                    />
+
+                    <TouchableOpacity
+                            style={{
+                            borderWidth: 1, borderColor: '#FFF', marginTop: 20, height: 45, width: 240,
+                            borderRadius: 20, justifyContent: 'center', alignItems: 'center', backgroundColor: '#7ef3e0'
+
+                            }}
+                            onPress={() => this.postStufftoRegister() }
+                        >
+                        <Text style={{color:'white', fontSize: 18}}>Cadastrar</Text>
+                    </TouchableOpacity>
+
+                </ScrollView>
+            </View>
         </LinearGradient>
-      </ScrollView>
     );
   }
 }
-//tirei uma view que cobria o botão "Cadastrar", mas acho que eu não precisava ter feito isso
-//assim... se quiser por ela ae de novo pra testar, manda ver.
+
+const styles = StyleSheet.create({
+    container: {
+        paddingTop: 20,
+        backgroundColor: 'transparent',
+        justifyContent: 'center',
+        paddingHorizontal: 10,
+
+    },
+});
+
+const pickerSelectStyles = StyleSheet.create({
+    inputIOS: {
+      backgroundColor: 'transparent',
+      borderColor: 'white',
+      width: 400,
+      borderWidth: 1,
+      borderRadius: 20,
+      marginTop: 10
+    },
+});

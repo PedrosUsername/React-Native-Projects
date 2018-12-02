@@ -12,7 +12,6 @@ import homeApp from './Telas/Home';
 //pilha de navegacao para telas do usuario
 const AppStack = createStackNavigator({
   Home: {screen:  menu},
-  Menu: {screen: menu},
   Configuracao: {screen: config},
   Teste2: {screen: telaTeste2},
   Teste: {screen: telaTeste},

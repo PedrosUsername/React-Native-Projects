@@ -25,7 +25,7 @@ export default class TelaLogin extends Component {
   //funcao que liga as pilhas de navegacao AppStack e AuthStack
   _signInAsync = async () => {
     
-    this.props.navigation.navigate('Menu', {
+    this.props.navigation.navigate('Home', {
       user: this.state.usuario,
     });
     
@@ -78,7 +78,7 @@ export default class TelaLogin extends Component {
       <ScrollView>
 
                     <View style={LoginStyle.titulo}>
-                      <Text style={LoginStyle.textTitulo}>MeetingOpp</Text>
+                      <Text style={LoginStyle.textTitulo}>MeetingApp</Text>
                     </View>
 
                     <View style={LoginStyle.viewSecundaria}>

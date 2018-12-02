@@ -26,7 +26,7 @@ class HomeScreen extends React.Component {
 
     this.state = {
       usuario: user,
-      local: '         '+'Sala LP - Turma Ladeira'
+      local: 'Sala LP - Turma Ladeira'
     }
   }
   
@@ -67,7 +67,7 @@ class HomeScreen extends React.Component {
                             placeholder="Selecione o País"
                             mode="dropdown"
                             >
-                                <Picker.Item label={this.state.local}  value="salaLP"/>
+                                <Picker.Item label={'         ' + this.state.local}  value="salaLP"/>
                             </Picker>
                         </View>
                     <TouchableOpacity style={MenuStyle.btnContainerCentral}>

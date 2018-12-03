@@ -10,11 +10,12 @@ import Loader from '../Telas/Loader';
 // Coloque o IP do roteador da rede que
 // conecta o servidor aos dispositivos
 // moveis dos usuarios
-var ROTEADOR = '192.168.43.176:3000';
+var ROTEADOR = 'trabalhodelp.herokuapp.com';
 // Celular Pedro ---> '192.168.43.176:3000'
 // RoteadorCasa Pedro ---> '192.168.0.2:3000'
 // Heroku ---> 'trabalhodelp.herokuapp.com'
 
+user = '';
 
 class HomeScreen extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class HomeScreen extends React.Component {
 
     // recebe parametros de Login.js
     const { navigation } = this.props;
-    const user = navigation.getParam('user', 'x');
+    user = navigation.getParam('user', 'x');
 
     this.state = {
       usuario: user,
@@ -143,10 +144,7 @@ class Estatistica extends React.Component {
   constructor(props) {
     super(props)
 
-    // recebe parametros de Login.js
-    const { navigation } = this.props;
-    const user = navigation.getParam('user', 'x');
-
+    
     this.state = {
       usuario: user,
       serversResponse: [],
@@ -221,7 +219,7 @@ class Estatistica extends React.Component {
                   <Text>no momento não existem</Text>
                   <Text>usuarios compativeis com você { this.state.usuario }.</Text>
                   <Text>pesquise por:</Text>
-                  <Text>usuario!=' '</Text>
+                  <Text>usuario!=''</Text>
                   <Text>para ver todo os usuarios</Text>
                   <Text>registrados.</Text>
 
@@ -236,10 +234,12 @@ class Estatistica extends React.Component {
                 <View style={styles.item}>
 
                   <Text>usuario: {item.usuario}</Text>
-                  <Text>signo: {item.signo}</Text>
-                  <Text>curso: {item.curso}</Text>
-                  <Text>uma_banda: {item.uma_banda}</Text>
-                  <Text>uma_refeicao: {item.uma_refeicao}</Text>
+                  <Text>uma_cor: {item.uma_cor}</Text>
+                  <Text>um_esporte: {item.um_esporte}</Text>
+                  <Text>uma_divercao: {item.uma_diversao}</Text>
+                  <Text>um_estilo: {item.um_estilo}</Text>
+                  <Text>personalidade: {item.personalidade}</Text>
+                  <Text>telefone: {item.telefone}</Text>
 
                 </View>
               }

@@ -6,7 +6,7 @@ import LoginStyle from '../Style/loginStyle';
 // Coloque o IP do roteador da rede que
 // conecta o servidor aos dispositivos
 // moveis dos usuarios
-var ROTEADOR = '192.168.43.176:3000';
+var ROTEADOR = 'trabalhodelp.herokuapp.com';
 // Celular Pedro ---> '192.168.43.176:3000'
 // RoteadorCasa Pedro ---> '192.168.0.11:3000'
 // Heroku ---> 'trabalhodelp.herokuapp.com'

@@ -7,7 +7,7 @@ import RNPickerSelect from 'react-native-picker-select';
 // Coloque o IP do roteador da rede que
 // conecta o servidor aos dispositivos
 // moveis dos usuarios
-var ROTEADOR = '192.168.43.176:3000';
+var ROTEADOR = 'trabalhodelp.herokuapp.com';
 // Celular Pedro ---> '192.168.43.176:3000'
 // RoteadorCasa Pedro ---> '192.168.0.2:3000'
 // Heroku ---> 'trabalhodelp.herokuapp.com'
@@ -30,12 +30,16 @@ export default class CadastroPerguntas extends Component {//<Props> {
       usuario: user,
       senha: password,
       full_nome: fullname,
-      curso: '',
-      signo: '',
-      uma_refeicao: '',
-      uma_banda: '',
+      //uma_cor: '',
+      //um_esporte: '',
+      //uma_divercao: '',
+      //um_estilo: '',
+      //personalidade: '',
+      //uma_area: '',
+      telefone: '',
+      descricao: '',
 
-      corFavorita: undefined,
+      uma_cor: undefined,
             items: [
                 {
                     label: 'Vermelho',
@@ -74,7 +78,7 @@ export default class CadastroPerguntas extends Component {//<Props> {
                     value: 'Preto',
                 },
             ],
-    favSport: undefined,
+    um_esporte: undefined,
             items2: [
                 {
                     label: 'Futebol',
@@ -101,7 +105,7 @@ export default class CadastroPerguntas extends Component {//<Props> {
                     value: 'Sedentario',
                 },
             ],
-        diversao: undefined,
+        uma_diversao: undefined,
             items3: [
                 {
                     label: 'Cinema',
@@ -128,7 +132,7 @@ export default class CadastroPerguntas extends Component {//<Props> {
                     value: 'Jogar video games',
                 }
             ],
-        musica: undefined,
+        um_estilo: undefined,
             items4: [
               {
                 label:'Pop',
@@ -186,7 +190,7 @@ export default class CadastroPerguntas extends Component {//<Props> {
                 value: 'Intuitivo introvertido'
               },
             ],
-        materias: undefined,
+        uma_area: undefined,
             items6: [
               {
                 label:'Humanas',
@@ -219,57 +223,52 @@ export default class CadastroPerguntas extends Component {//<Props> {
         
         usuario: this.state.usuario,
         senha: this.state.senha,
-        full_nome: this.state.full_nome,
-        curso: this.state.curso,
-        signo: this.state.signo,
-        uma_banda: this.state.uma_banda,
-        uma_refeicao: this.state.uma_refeicao
+        nome: this.state.full_nome,
+        uma_cor: this.state.uma_cor,
+        um_esporte: this.state.um_esporte,
+        uma_diversao: this.state.uma_diversao,
+        um_estilo: this.state.um_estilo,
+        uma_area: this.state.uma_area,
+        personalidade: this.state.personalidade,
+        telefone: this.state.telefone,
+        descricao: this.state.descricao
         
       }),
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      console.log(responseJson);
+        console.log(responseJson);
 
-      this.props.navigation.navigate('Login');
+        this.props.navigation.navigate('Login');
     })
     .catch((error) => {
-    console.error(error);
+        console.error(error);
     });
 
   }
 
-  handleCurso = (text) => {
-    this.setState({ curso: text })
-  }
-  handleSigno = (text) => {
-    this.setState({ signo: text })
-  }
-  handleUmaRefeicao = (text) => {
-    this.setState({ uma_refeicao: text })
-  }
-  handleUmaBanda = (text) => {
-    this.setState({ uma_banda: text })
-  }
+
   handleUmaCor = (text) => {
-    this.setState({ corFavorita: text })
+    this.setState({ uma_cor: text })
   }
   handleUmEsporte = (text) => {
-    this.setState({ favSport: text });
+    this.setState({ um_esporte: text });
   }
   handleUmaDivercao = (text) => {
-    this.setState({ diversao: text });
+    this.setState({ uma_diversao: text });
   }
   handleUmEstilo = (text) => {
-    this.setState({ musica: text });
+    this.setState({ um_estilo: text });
   }
-  handleUmaPersonalidade = (text) => {
+  handlePersonalidade = (text) => {
     this.setState({ personalidade: text });
   }
   handleUmaArea = (text) => {
-    this.setState({ materias: text });
+    this.setState({ uma_area: text });
   }
-
+  handleTelefone = (text) => {
+    this.setState({ telefone: text });
+  }
 
   render (){
     
@@ -384,7 +383,7 @@ export default class CadastroPerguntas extends Component {//<Props> {
                         placeholderTextColor= 'white'
                         items={this.state.items5}
     
-                        onValueChange ={ this.handleUmaPersonalidade }
+                        onValueChange ={ this.handlePersonalidade }
     
                         onUpArrow={() => {
                             this.inputRefs.picker.togglePicker();
@@ -423,12 +422,12 @@ export default class CadastroPerguntas extends Component {//<Props> {
                         }}
                     />
 
-                    <Text style={{alignSelf:'flex-start', borderColor: 'white', borderWidth: 0, color: 'white', fontSize: 20, marginLeft: 25, marginTop: 30}}>seu telefone:</Text>
+                    <Text style={{color: 'white', fontSize: 15, marginTop: 20}}>seu telefone:</Text>
                         <TextInput
-                        placeholder='Matemática'
+                        placeholder='61********'
                         placeholderTextColor= 'white'
                         selectionColor='white'
-                        style={cadastroStyle.buttons}
+                        style={cadastroStyle.descricaoInput}
                         onChangeText = {this.handleTelefone}
                     />
 

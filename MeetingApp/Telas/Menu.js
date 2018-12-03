@@ -30,7 +30,7 @@ class HomeScreen extends React.Component {
       local: 'Sala LP - Turma Ladeira'
     }
   }
-  
+
   render() {
     return (
   <LinearGradient start={{x: 0, y: 0}} end={{x: 0.5, y: 0.5}} colors={['#9EFBD3', '#57E9F2', '#45D4FB']} style={MenuStyle.gradientView}>
@@ -85,7 +85,7 @@ class HomeScreen extends React.Component {
 
 class SettingsScreen extends React.Component {
   _signOutAsync = async () => {
-    
+
     this.props.navigation.navigate('Auth');
   };
 
@@ -144,7 +144,7 @@ class Estatistica extends React.Component {
   constructor(props) {
     super(props)
 
-    
+
     this.state = {
       usuario: user,
       serversResponse: [],
@@ -159,16 +159,16 @@ class Estatistica extends React.Component {
   //pega todos os usuarios do BD e joga em serversRespose
   getAllofThem(){
     fetch('http://' + ROTEADOR + '/pool_usuarios/', {
-    
+
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        
+
         usuario: this.state.usuario
-        
+
       }),
     })
     .then((response) => response.json())
@@ -184,18 +184,18 @@ class Estatistica extends React.Component {
   }
   //filtra os resultados com base nas "tags"
   postTags(){
-  
+
     fetch('http://' + ROTEADOR + '/pool_filtrados/', {
-    
+
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        
+
         data: this.state.tags
-        
+
       }),
     })
     .then((response) => response.json())
@@ -206,7 +206,7 @@ class Estatistica extends React.Component {
       alert("erro de sintaxe.");
       this.setState( {loading: false} );
     });
-  
+
 
 
   }
@@ -214,14 +214,14 @@ class Estatistica extends React.Component {
   renderMessage = () => {
     if(this.state.serversResponse.length < 1){
         return(
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <View style={{justifyContent: 'center', alignItems: 'center', color: 'white' }}>
 
-                  <Text>no momento não existem</Text>
-                  <Text>usuarios compativeis com você { this.state.usuario }.</Text>
-                  <Text>pesquise por:</Text>
-                  <Text>usuario!=''</Text>
-                  <Text>para ver todo os usuarios</Text>
-                  <Text>registrados.</Text>
+                  <Text style={{color: 'white', fontSize:15, lineHeight: 25 }}>
+                    No momento não existem usuarios compativeis com você { this.state.usuario }.
+                  </Text>
+                  <Text style={{color: 'white', fontSize:15, lineHeight: 25 }}>
+                   Para poder consultar usuarios que possuem algum tipo de caracteristica que lhe interessa, pesquise por: 'nome da caracteristica'='escolha da sua preferencia'
+                  </Text>
 
                 </View>
         );
@@ -230,16 +230,18 @@ class Estatistica extends React.Component {
           <FlatList
           data = { this.state.serversResponse }
           renderItem={
-            ({item}) => 
-                <View style={styles.item}>
+            ({item}) =>
+                <View style={{ backgroundColor: '#fff',height: 300, width: 290, borderRadius: 20, justifyContent: 'flex-start', alignItems: 'flex-start'}}>
 
-                  <Text>usuario: {item.usuario}</Text>
-                  <Text>uma_cor: {item.uma_cor}</Text>
-                  <Text>um_esporte: {item.um_esporte}</Text>
-                  <Text>uma_divercao: {item.uma_diversao}</Text>
-                  <Text>um_estilo: {item.um_estilo}</Text>
-                  <Text>personalidade: {item.personalidade}</Text>
-                  <Text>telefone: {item.telefone}</Text>
+                  <Text style={{marginLeft: 5, marginTop: 20, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>usuario: {item.usuario}</Text>
+                  <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>Cor preferida: {item.uma_cor}</Text>
+                  <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>Esporte preferido: {item.um_esporte}</Text>
+                  <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>Uma tipica saida com os amigos seria: {item.uma_diversao}</Text>
+                  <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>Estilo Musica: {item.um_estilo}</Text>
+                  <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>Personalidade: {item.personalidade}</Text>
+                  <TouchableOpacity><Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>Telefone: {item.telefone}</Text></TouchableOpacity>
+
+                  <TouchableOpacity style={{marginLeft: 5, borderColor: 'white', borderWidth: 1, borderRadius:20, justifyContent: 'center', alignItems: 'center', width: 150, height: 30, marginTop: 20, backgroundColor: '#9EFBD3'}}><Text style={{alignSelf: 'center', color: '#fff', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>Chat com {item.usuario}</Text></TouchableOpacity>
 
                 </View>
               }
@@ -249,7 +251,7 @@ class Estatistica extends React.Component {
     }
 }
 
-  
+
 
 
   handleTags = (text) => {
@@ -260,39 +262,43 @@ class Estatistica extends React.Component {
 
   render() {
     return (
-    <View style={{flex: 1}}>
-      <Loader 
-        loading = {this.state.loading} />
+        <LinearGradient start={{x: 0, y: 0}} end={{x: 0.5, y: 0.5}} colors={['#9EFBD3', '#57E9F2', '#45D4FB']} style={{width: '100%', height: 900, justifyContent: 'center', alignItems: 'center'}}>
+                  <View>
+                  <ScrollView>
+                    <Loader
+                      loading = {this.state.loading} />
 
-      <TextInput
-        style={{height: 60}}
-        placeholder="usuario='Pedro' AND signo='peixes'"
-        placeholderTextColor= '#aaa'
-        selectionColor='white'
-        onChangeText = {this.handleTags}
-      />
+                    <TextInput
+                      style={{height: 40, borderWidth: 1, borderColor: 'white', marginTop: 20, width: 350, alignSelf: 'center', borderRadius: 20, backgroundColor: 'white', color: '#45D4FB'}}
+                      placeholder="usuario='Pedro' AND signo='peixes'"
+                      placeholderTextColor= '#45D4FB'
+                      selectionColor='white'
+                      onChangeText = {this.handleTags}
+                    />
 
-      <Button
-          color={'blue'}
-          onPress={ () => { 
-            if ((this.state.tags != '')&&(this.state.tags != ' ')){
-              this.setState({ loading: true })
-              this.postTags()
-              
-            }else{
-              this.setState({ loading: true })
-              this.getAllofThem()
-            }
-            } }
-          title="pesquisar"
-      />
+                    <TouchableOpacity
+                        color={'blue'}
+                        onPress={ () => {
+                          if ((this.state.tags != '')&&(this.state.tags != ' ')){
+                            this.setState({ loading: true })
+                            this.postTags()
 
-      <View style={styles.container} style={{flex: 1}}>
-          {this.renderMessage()}
-      </View>
-            
-    </View>
+                          }else{
+                            this.setState({ loading: true })
+                            this.getAllofThem()
+                          }
+                          } }
+                          style={{borderColor: 'white', borderWidth: 1, borderRadius:20, justifyContent: 'center', alignItems: 'center', width: 150, height: 30, alignSelf: 'center', marginTop: 20, backgroundColor: '#9EFBD3'}}
+                    >
+                    <Text style={{color: 'white', fontSize: 15, fontStyle: 'italic'}}>Pesquisar</Text>
+                    </TouchableOpacity>
 
+                    <View style={{marginTop: 20, color: 'white', width: 290, height: 300, borderRadius:20, alignItems: 'center', justifyContent: 'center', alignSelf: 'center'}}>
+                        {this.renderMessage()}
+                    </View>
+                    </ScrollView>
+                  </View>
+</LinearGradient>
     );
   }
 }
@@ -301,7 +307,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
   },
-  
+
   h1: {
     fontSize: 40,
     padding: 20,

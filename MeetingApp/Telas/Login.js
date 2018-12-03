@@ -2,7 +2,75 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button, TextInput, Image, Switch, TouchableOpacity, textDecorationLine, ScrollView, KeyboardAvoidingView, ImageBackground} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import LoginStyle from '../Style/loginStyle';
+
+// Coloque o IP do roteador da rede que
+// conecta o servidor aos dispositivos
+// moveis dos usuarios
+var ROTEADOR = 'trabalhodelp.herokuapp.com';
+// Celular Pedro ---> '192.168.43.176:3000'
+// RoteadorCasa Pedro ---> '192.168.0.11:3000'
+// Heroku ---> 'trabalhodelp.herokuapp.com'
+
+
 export default class TelaLogin extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      usuario: '',
+      senha: '',
+    }
+  }
+
+  //funcao que liga as pilhas de navegacao AppStack e AuthStack
+  _signInAsync = async () => {
+    
+    this.props.navigation.navigate('Home', {
+      user: this.state.usuario,
+    });
+    
+  };
+  
+  postStuff() {
+    
+    fetch('http://' + ROTEADOR +  '/login', {
+
+	  method: 'POST',
+	  headers: {
+	    'Accept': 'application/json',
+	    'Content-Type': 'application/json',
+	  },
+	  body: JSON.stringify({
+	    
+	    usuario: this.state.usuario,
+	    senha: this.state.senha,
+
+	  }),
+	  })
+    .then((response) => response.json() )
+    .then((responseJson) => {
+      console.log(responseJson);
+      if(responseJson.length > 0){
+        console.log('acesso concedido');
+        this._signInAsync()
+        //this.props.navigation.navigate('App');
+      }else{
+        console.log('acesso negado');
+        alert('usuario não registrado');
+      }
+    })
+    .catch((error) => {
+    console.error(error);
+    })
+
+  }
+
+  handleUsuario = (text) => {
+    this.setState({ usuario: text })
+  }
+  handleSenha = (text) => {
+    this.setState({ senha: text })
+  }
 
   render() {
     return (
@@ -24,6 +92,7 @@ export default class TelaLogin extends Component {
                               selectionColor='white'
                               keyboardType={'email-address'}
                               style={{borderColor:'white', borderWidth:2,  padding: 15, borderRadius: 30, width: '80%', color: 'white', marginTop: 10}}
+                              onChangeText = {this.handleUsuario}
                             />
 
                             <TextInput
@@ -31,11 +100,12 @@ export default class TelaLogin extends Component {
                                 placeholderTextColor= 'white'
                                 selectionColor='white'
                                 style={{borderColor:'white', borderWidth:2, padding: 15, borderRadius: 30, width: '80%', color: 'white', marginTop: 10}}
+                                onChangeText = {this.handleSenha}
                               />
 
 
                               <TouchableOpacity style={{padding: 7, marginTop: 10, borderRadius:50, width: 170, alignSelf: 'center', borderColor: 'white', borderWidth: 2, backgroundColor: '#7ef3e0'}}
-                              onPress={() => this.props.navigation.navigate('Menu')}
+                              onPress={() => { this.postStuff() }}
                               >
                                 <Text style={{alignSelf:'center', color: 'white', fontStyle: 'italic', fontWeight: 'bold', fontSize: 18}}>Entrar</Text>
                               </TouchableOpacity>
@@ -49,6 +119,7 @@ export default class TelaLogin extends Component {
 
                         <TouchableOpacity
                           style={{padding: 5, borderRadius: 30, width: '45%', marginTop: 15, borderColor: 'white', borderWidth: 0}}
+                          onPress={() => alert("sefodeo parcero...")}
                         ><Text style={{ textAlign: 'center', color: 'white', fontStyle: 'italic', fontWeight: 'bold', fontSize: 16, textDecorationLine: 'underline'}}>Recuperar Senha</Text></TouchableOpacity>
                     </View>
 

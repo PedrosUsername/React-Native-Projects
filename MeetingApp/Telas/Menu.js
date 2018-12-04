@@ -231,17 +231,17 @@ class Estatistica extends React.Component {
           data = { this.state.serversResponse }
           renderItem={
             ({item}) =>
-                <View style={{ backgroundColor: '#fff',height: 300, width: 290, borderRadius: 20, justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+                <View style={{flex:1, backgroundColor: '#fff',padding: 1, marginTop: 10, width: 290, borderRadius: 20, justifyContent: 'flex-start', alignItems: 'flex-start'}}>
 
-                  <Text style={{marginLeft: 5, marginTop: 20, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>usuario: {item.usuario}</Text>
-                  <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>Cor preferida: {item.uma_cor}</Text>
-                  <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>Esporte preferido: {item.um_esporte}</Text>
-                  <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>Uma tipica saida com os amigos seria: {item.uma_diversao}</Text>
-                  <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>Estilo Musica: {item.um_estilo}</Text>
-                  <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>Personalidade: {item.personalidade}</Text>
-                  <TouchableOpacity><Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>Telefone: {item.telefone}</Text></TouchableOpacity>
+                  <Text style={{marginLeft: 5, marginTop: 20, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>usuario: <Text style={{color: '#555'}}>{item.usuario}</Text></Text>
+                  <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>uma_cor: <Text style={{color: '#555'}}>{item.uma_cor}</Text></Text>
+                  <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>um_esporte: <Text style={{color: '#555'}}>{item.um_esporte}</Text></Text>
+                  <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>uma_diversao <Text style={{color: '#555'}}>{item.uma_diversao}:</Text></Text>
+                  <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>um_estilo: <Text style={{color: '#555'}}>{item.um_estilo}</Text></Text>
+                  <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>personalidade: <Text style={{color: '#555'}}>{item.personalidade}</Text></Text>
+                  <TouchableOpacity><Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>telefone: <Text style={{color: '#555'}}>{item.telefone}</Text></Text></TouchableOpacity>
 
-                  <TouchableOpacity style={{marginLeft: 5, borderColor: 'white', borderWidth: 1, borderRadius:20, justifyContent: 'center', alignItems: 'center', width: 150, height: 30, marginTop: 20, backgroundColor: '#9EFBD3'}}><Text style={{alignSelf: 'center', color: '#fff', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>Chat com {item.usuario}</Text></TouchableOpacity>
+                  <TouchableOpacity style={{marginLeft: 5, borderColor: 'white', borderWidth: 1, borderRadius:20, justifyContent: 'center', alignItems: 'center', width: 150, height: 30, marginTop: 20, backgroundColor: '#9EFBD3'}}><Text style={{alignSelf: 'center', color: '#fff', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>chat</Text></TouchableOpacity>
 
                 </View>
               }
@@ -262,7 +262,7 @@ class Estatistica extends React.Component {
 
   render() {
     return (
-        <LinearGradient start={{x: 0, y: 0}} end={{x: 0.5, y: 0.5}} colors={['#9EFBD3', '#57E9F2', '#45D4FB']} style={{width: '100%', height: 900, justifyContent: 'center', alignItems: 'center'}}>
+        <LinearGradient start={{x: 0, y: 0}} end={{x: 0.5, y: 0.5}} colors={['#9EFBD3', '#57E9F2', '#45D4FB']} style={{flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center'}}>
                   <View>
                   <ScrollView>
                     <Loader
@@ -270,7 +270,7 @@ class Estatistica extends React.Component {
 
                     <TextInput
                       style={{height: 40, borderWidth: 1, borderColor: 'white', marginTop: 20, width: 350, alignSelf: 'center', borderRadius: 20, backgroundColor: 'white', color: '#45D4FB'}}
-                      placeholder="usuario='Pedro' AND signo='peixes'"
+                      placeholder="usuario='Pedro' AND um_estio='Pop'"
                       placeholderTextColor= '#45D4FB'
                       selectionColor='white'
                       onChangeText = {this.handleTags}
@@ -293,9 +293,10 @@ class Estatistica extends React.Component {
                     <Text style={{color: 'white', fontSize: 15, fontStyle: 'italic'}}>Pesquisar</Text>
                     </TouchableOpacity>
 
-                    <View style={{marginTop: 20, color: 'white', width: 290, height: 300, borderRadius:20, alignItems: 'center', justifyContent: 'center', alignSelf: 'center'}}>
+                    <View style={{flex: 1, marginTop: 10, marginBottom: 5, color: 'white', width: 290, borderRadius:20, alignItems: 'center', justifyContent: 'center', alignSelf: 'center'}}>
                         {this.renderMessage()}
                     </View>
+
                     </ScrollView>
                   </View>
 </LinearGradient>

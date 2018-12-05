@@ -19,6 +19,10 @@ Para testar o aplicativo no Ubuntu 18.04 com react-native, um aparelho Android e
 -**Caso o ambiente sinta falta de alguma dependência**
  * Rode o comando $`npm install [dependencia]`
  * Rode o comando $`react-native run-android`
+ 
+<div style="text-align:center">
+    <img src ="https://cdn-images-1.medium.com/max/1600/1*okufk5mMDbTfqA5iS_rldQ.png" alt = "React Native Logo" height="500" width="500"/>
+</div>
 
 ## Entendendo o Modelo de Negócio
 O aplicativo em questão foi pensado e desenvolvido na disciplina de [Linguagens de Programação](https://matriculaweb.unb.br/graduacao/oferta_dados.aspx?cod=116343&dep=116) da UnB. O objetivo do projeto foi a criação de uma "plataforma de mineração de pessoas" baseada em gostos pessoais em comum.

@@ -211,16 +211,16 @@ export default class CadastroPerguntas extends Component {//<Props> {
 
   //pede para o bd registrar o usuario com tais valores
   postStufftoRegister() {
-    
+
     fetch('http://' + ROTEADOR + '/novousuario/', {
-   
+
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        
+
         usuario: this.state.usuario,
         senha: this.state.senha,
         nome: this.state.full_nome,
@@ -232,7 +232,7 @@ export default class CadastroPerguntas extends Component {//<Props> {
         personalidade: this.state.personalidade,
         telefone: this.state.telefone,
         descricao: this.state.descricao
-        
+
       }),
     })
     .then((response) => response.json())
@@ -271,8 +271,8 @@ export default class CadastroPerguntas extends Component {//<Props> {
   }
 
   render (){
-    
-    
+
+
     return (
         <LinearGradient start={{x: 0, y: 0}} end={{x: 0.5, y: 0.5}} colors={['#9EFBD3', '#57E9F2', '#45D4FB']} style={cadastroStyle.gradientView}>
 
@@ -338,7 +338,7 @@ export default class CadastroPerguntas extends Component {//<Props> {
                         items={this.state.items3}
 
                         onValueChange = {this.handleUmaDivercao}
-                        
+
                         onUpArrow={() => {
                             this.inputRefs.picker.togglePicker();
                         }}
@@ -382,9 +382,9 @@ export default class CadastroPerguntas extends Component {//<Props> {
                         }}
                         placeholderTextColor= 'white'
                         items={this.state.items5}
-    
+
                         onValueChange ={ this.handlePersonalidade }
-    
+
                         onUpArrow={() => {
                             this.inputRefs.picker.togglePicker();
                         }}
@@ -406,9 +406,9 @@ export default class CadastroPerguntas extends Component {//<Props> {
                         }}
                         placeholderTextColor= 'white'
                         items={this.state.items6}
-    
+
                         onValueChange={ this.handleUmaArea }
-    
+
                         onUpArrow={() => {
                             this.inputRefs.picker.togglePicker();
                         }}
@@ -422,9 +422,9 @@ export default class CadastroPerguntas extends Component {//<Props> {
                         }}
                     />
 
-                    <Text style={{color: 'white', fontSize: 15, marginTop: 20}}>seu telefone:</Text>
+                    <Text style={{color: 'white', fontSize: 15, marginTop: 20}}>Numero do celular:</Text>
                         <TextInput
-                        placeholder='61********'
+                        placeholder='5561*********'
                         placeholderTextColor= 'white'
                         selectionColor='white'
                         style={cadastroStyle.descricaoInput}

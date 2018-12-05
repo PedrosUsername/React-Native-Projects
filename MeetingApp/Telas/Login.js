@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button, TextInput, Image, Switch, TouchableOpacity, textDecorationLine, ScrollView, KeyboardAvoidingView, ImageBackground} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import LoginStyle from '../Style/loginStyle';
-
+import PasswordInputText from 'react-native-hide-show-password-input';
 // Coloque o IP do roteador da rede que
 // conecta o servidor aos dispositivos
 // moveis dos usuarios
@@ -24,15 +24,15 @@ export default class TelaLogin extends Component {
 
   //funcao que liga as pilhas de navegacao AppStack e AuthStack
   _signInAsync = async () => {
-    
+
     this.props.navigation.navigate('Home', {
       user: this.state.usuario,
     });
-    
+
   };
-  
+
   postStuff() {
-    
+
     fetch('http://' + ROTEADOR +  '/login', {
 
 	  method: 'POST',
@@ -41,7 +41,7 @@ export default class TelaLogin extends Component {
 	    'Content-Type': 'application/json',
 	  },
 	  body: JSON.stringify({
-	    
+
 	    usuario: this.state.usuario,
 	    senha: this.state.senha,
 
@@ -101,6 +101,7 @@ export default class TelaLogin extends Component {
                                 selectionColor='white'
                                 style={{borderColor:'white', borderWidth:2, padding: 15, borderRadius: 30, width: '80%', color: 'white', marginTop: 10}}
                                 onChangeText = {this.handleSenha}
+                                secureTextEntry={true}
                               />
 
 

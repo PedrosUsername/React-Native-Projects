@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, FlatList, View, Header, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image, Picker } from 'react-native';
+import { Text, FlatList, View, Header, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image, Picker, Linking } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 import { Icon, Button, SocialIcon, Avatar } from 'react-native-elements';
@@ -14,8 +14,8 @@ var ROTEADOR = 'trabalhodelp.herokuapp.com';
 // Celular Pedro ---> '192.168.43.176:3000'
 // RoteadorCasa Pedro ---> '192.168.0.2:3000'
 // Heroku ---> 'trabalhodelp.herokuapp.com'
-
 user = '';
+
 
 class HomeScreen extends React.Component {
   constructor(props) {
@@ -27,9 +27,12 @@ class HomeScreen extends React.Component {
 
     this.state = {
       usuario: user,
-      local: 'Sala LP - Turma Ladeira'
+      local: 'Sala LP - Turma Ladeira',
+      numAleatorio: 'null',
+      recebeCaminho: 'img/avatares/1.png'
     }
   }
+
 
   render() {
     return (
@@ -41,13 +44,16 @@ class HomeScreen extends React.Component {
               <View style={MenuStyle.viewContainerCentral}>
 
 
-                        <Image source={require('../img/avatar.png')}
+                        <Image source={require(`../img/avatares/1.png`)}
                             style={MenuStyle.viewContainerCentralAvatar}
                         />
+
                         <Text style={{alignSelf: 'center', fontSize: 18, color: '#57E9F2', fontWeight: 'bold',marginTop: 20}} >{this.state.usuario}</Text>
                         <Text style={{alignSelf: 'center', fontSize: 18, color: '#57E9F2', fontWeight: 'bold', marginTop: 30}}>Recarregar Combinaçōes</Text>
                       <TouchableOpacity
                         style={{borderColor: 'black', borderWidth: 0, width: 130, height: 30, alignSelf: 'center', backgroundColor: '#7ef3e0', borderRadius: 20, marginTop: 10, justifyContent: 'center', alignItems: 'center'}}
+                        onPress={() => alert('funcao esta sendo criada')}
+
                       >
                           <Icon
                             name='ios-refresh'
@@ -139,7 +145,7 @@ class Mensagem extends React.Component {
     );
   }
 }
-
+/****************************************** ESTATISTICA ********************************************/
 class Estatistica extends React.Component {
   constructor(props) {
     super(props)
@@ -155,6 +161,7 @@ class Estatistica extends React.Component {
     this.getAllofThem()
 
   }
+
 
   //pega todos os usuarios do BD e joga em serversRespose
   getAllofThem(){
@@ -241,7 +248,15 @@ class Estatistica extends React.Component {
                   <Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>personalidade: <Text style={{color: '#555'}}>{item.personalidade}</Text></Text>
                   <TouchableOpacity><Text style={{marginLeft: 5, marginTop: 10, color: '#45D4FB', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>telefone: <Text style={{color: '#555'}}>{item.telefone}</Text></Text></TouchableOpacity>
 
-                  <TouchableOpacity style={{marginLeft: 5, borderColor: 'white', borderWidth: 1, borderRadius:20, justifyContent: 'center', alignItems: 'center', width: 150, height: 30, marginTop: 20, backgroundColor: '#9EFBD3'}}><Text style={{alignSelf: 'center', color: '#fff', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>chat</Text></TouchableOpacity>
+                  <TouchableOpacity style={{marginLeft: 5, borderColor: 'white', borderWidth: 1, borderRadius:20, justifyContent: 'center', alignItems: 'center', width: 150, height: 30, marginTop: 20, backgroundColor: '#9EFBD3'}}
+                    onPress={() => {
+                        Linking.openURL(`https://api.whatsapp.com/send?phone=${item.telefone}&text=Olá%20Bom%20Dia!!!!`);
+                    }}
+                  >
+
+                        <Text style={{alignSelf: 'center', color: '#fff', fontSize: 15, fontStyle: 'italic', fontWeight: 'bold'}}>Chat</Text>
+
+                  </TouchableOpacity>
 
                 </View>
               }

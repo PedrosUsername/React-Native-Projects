@@ -21,7 +21,7 @@ Para testar o aplicativo no Ubuntu 18.04 com react-native, um aparelho Android e
  * Rode o comando $`react-native run-android`
  
 <div style="text-align:center">
-    <img src ="https://cdn-images-1.medium.com/max/1600/1*okufk5mMDbTfqA5iS_rldQ.png" alt = "React Native Logo" height="500" width="500"/>
+    <img src ="https://i.imgur.com/6VXHsAV.png" alt = "React Native Logo" height="500" width="500"/>
 </div>
 
 ## Entendendo o Modelo de Negócio

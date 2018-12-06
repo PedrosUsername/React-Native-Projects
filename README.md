@@ -1,4 +1,8 @@
 # Meeting-App<sup><sup><sup>v1.0</sup></sup></sup>
+
+<div style="text-align:center">
+    <img src ="https://i.imgur.com/opdo2nx.jpg" alt = "React Native Logo" height="500" width="500"/>
+</div>
  
 Um aplicativo amigável, feito para criar amizades!
 

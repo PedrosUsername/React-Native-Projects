@@ -120,7 +120,7 @@ export default class TelaLogin extends Component {
 
                         <TouchableOpacity
                           style={{padding: 5, borderRadius: 30, width: '45%', marginTop: 15, borderColor: 'white', borderWidth: 0}}
-                          onPress={() => alert("sefodeo parcero...")}
+                          onPress={() => alert("funcionalidde não desenvolvida")}
                         ><Text style={{ textAlign: 'center', color: 'white', fontStyle: 'italic', fontWeight: 'bold', fontSize: 16, textDecorationLine: 'underline'}}>Recuperar Senha</Text></TouchableOpacity>
                     </View>
 
